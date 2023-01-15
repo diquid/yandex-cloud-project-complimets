@@ -15,6 +15,6 @@ provider "yandex" {
 
 locals {
   cloud_id  = "b1gd63eh2qj3euded36k"
-  folder_id = "b1giifl9fbp0o43nd7fr"
+  folder_id = "b1gi38kh5fsn2l16c6e8"
   zone      = "ru-central1-a"
 }
