@@ -1,0 +1,7 @@
+CREATE TABLE compliments
+(
+    id Utf8,
+    content Utf8,
+    PRIMARY KEY (id)
+);
+COMMIT; 

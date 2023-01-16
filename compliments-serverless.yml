@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  title: compliments-serverless
+  version: 1.0.0
+paths:
+  /:
+    get:
+      x-yc-apigateway-integration:
+        type: object_storage
+        bucket:             storage-for-compliments        # <-- имя бакета
+        object:             index.html          # <-- имя html-файла
+        presigned_redirect: false
+        service_account:    ajeeggd83mk0med1220l # <-- идентификатор сервисного аккаунта
+      operationId: static
+  /shorten:
+    post:
+      x-yc-apigateway-integration:
+        type: cloud_functions
+        function_id:  d4e8fkmq4htluauapff5               # <-- идентификатор функции
+      operationId: shorten
+  /r/{id}:
+    get:
+      x-yc-apigateway-integration:
+        type: cloud_functions
+        function_id:  d4e8fkmq4htluauapff5               # <-- идентификатор функции
+      operationId: redirect
+      parameters:
+        - description: id of the url
+          explode: false
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          style: simple
